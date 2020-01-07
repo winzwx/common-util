@@ -10,7 +10,7 @@ import java.io.InputStream;
 public class StreamUtil {
 	/**
 	 * @Title: close   
-	 * @Description: ÅúÁ¿¹Ø±ÕÁ÷   
+	 * @Description: æ‰¹é‡å…³é—­æµ   
 	 * @param: @param autoCloseables      
 	 * @return: void      
 	 * @throws
@@ -29,7 +29,7 @@ public class StreamUtil {
 	
 	/**
 	 * @Title: readTextFile   
-	 * @Description: ÒÔÁ÷µÄ·½Ê½£¬¶ÁÈ¡ÎÄ±¾ÎÄ¼şÄÚÈİ   
+	 * @Description: ä»¥æµçš„æ–¹å¼ï¼Œè¯»å–æ–‡æœ¬æ–‡ä»¶å†…å®¹   
 	 * @param: @param file
 	 * @param: @return      
 	 * @return: String      
@@ -45,7 +45,7 @@ public class StreamUtil {
 				str += new String(b);
 			}
 			return str;
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}finally {
@@ -54,7 +54,7 @@ public class StreamUtil {
 	}
 	/**
 	 * @Title: getFileContent   
-	 * @Description: ¸ù¾İÎÄ¼şÈ«Ãû¶ÁÈ¡ÎÄ¼şÄÚÈİ   
+	 * @Description: æ ¹æ®æ–‡ä»¶å…¨åè¯»å–æ–‡ä»¶å†…å®¹   
 	 * @param: @param fileFullName
 	 * @param: @return      
 	 * @return: String      
@@ -65,7 +65,7 @@ public class StreamUtil {
 	}
 	/**
 	 * @Title: writeTextFile   
-	 * @Description: °ÑÄÚÈİĞ´µ½Ö¸¶¨ÎÄ¼ş   
+	 * @Description: æŠŠå†…å®¹å†™åˆ°æŒ‡å®šæ–‡ä»¶   
 	 * @param: @param content
 	 * @param: @param file
 	 * @param: @param append      
@@ -75,17 +75,17 @@ public class StreamUtil {
 	public static void writeTextFile(String content,File file,boolean append) {
 		BufferedWriter writer = null;
 		try {
-			//ÅĞ¶ÏĞ´ÎÄ¼şµÄÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ
+			//åˆ¤æ–­å†™æ–‡ä»¶çš„æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨
 			String parent = file.getParent();
 			File parentFile = new File(parent);
 			if(!parentFile.exists()) {
 				parentFile.mkdirs();
 			}
-			//Ğ´ÎÄ¼ş
+			//å†™æ–‡ä»¶
 			writer = new BufferedWriter(new FileWriter(file,append));
 			writer.write(content);
 			writer.flush();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			close(writer);
